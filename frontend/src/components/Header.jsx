@@ -12,11 +12,11 @@ function Header() {
   };
 
   return (
-    <header className="bg-gray-800">
+    <header className="bg-gray-800 sticky top-0">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="text-white flex items-center flex-shrink-0 mr-4">
-          <GiPistolGun className="text-white mr-2" size={24} />
-          <span className="font-bold text-xl">TopGUN</span>
+          <GiPistolGun className="text-white mr-2" size={48} />
+          <span className="font-bold text-3xl">TopGUN</span>
         </Link>
         <div className="flex items-center flex-grow">
           <div className="w-full mr-4">

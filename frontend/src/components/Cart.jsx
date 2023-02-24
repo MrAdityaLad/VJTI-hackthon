@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cart = () => {
   return (
-    <div className='bg-gray-50 h-80 w-64 m-4 rounded-2xl drop-shadow-lg'>
+    <div className='bg-gray-50 h-80 w-64 m-4 rounded-2xl shadow-lg'>
         <div className='image '>
             <img className='rounded-t-2xl' src="a.avif" alt="" />
         </div>
