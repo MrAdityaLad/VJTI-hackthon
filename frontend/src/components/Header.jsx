@@ -12,7 +12,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-gray-800 sticky top-0">
+    <header className="bg-gray-800 fixed z-10 top-0 w-screen ">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="text-white flex items-center flex-shrink-0 mr-4">
           <GiPistolGun className="text-white mr-2" size={48} />
