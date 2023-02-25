@@ -26,6 +26,10 @@ const router = createBrowserRouter ([
     element: <Layout/>,
     children: [
       {
+        path: "/",
+        element: <Home/>
+      },
+      {
         path: "/home",
         element: <Home/>
       },
@@ -35,13 +39,10 @@ const router = createBrowserRouter ([
       }
     ]
   }
+ 
 ])
 
 function App() {
-
-
-
-
   return (
     <div className="App h-screen relative">
       <RouterProvider router={router}/>

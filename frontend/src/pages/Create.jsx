@@ -1,15 +1,32 @@
 import { useEffect, useState } from "react"
 import { getDataFromCache } from "../caching/caches";
+import {ethers} from "ethers"
+import { Buffer } from 'buffer';
+import * as ipfsClient from 'ipfs-http-client'
+
+const projectId = '2MDbWF4Z8tgGootvw1QIcoqJ2AZ';
+const projectSecret = 'eb886de9028b36da1eb85654c3fefa8b';
+const auth =
+    'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+
+const client = ipfsClient.create({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+    headers: {
+        authorization: auth,
+    },
+});
+
+client.pin.add('QmeGAVddnBSnKc1DLE7DLV9uuTqo5F7QbaveTjr45JUdQn').then((res) => {
+    console.log(res);
+});
+
+const marketplace = getDataFromCache("Marketplace", "http://localhost:5174")
+const nft = getDataFromCache("nft", "http://localhost:5174")
 
 export default function Create() {
 
-
-    const marketplace = getDataFromCache("Marketplace", "http://localhost:5174")
-    const nft = getDataFromCache("nft", "http://localhost:5174")
-
-    useEffect(() => {
-
-    })
 
     const [values, setValues] = useState({
         image: "",
@@ -32,12 +49,12 @@ export default function Create() {
           }
         }
       }
-      const createNFT = async () => {
-        if (!values) return
+      const createNFT = async (e) => {
+        e.preventDefault()
         try{
           const result = await client.add(JSON.stringify(values))
           console.log(result);
-          mintThenList(result)
+        //   mintThenList(result)
         } catch(error) {
           console.log("ipfs uri upload error: ", error)
         }
@@ -142,22 +159,7 @@ export default function Create() {
                       </p>
                     </div>
   
-                    {/* <div>
-                      <label className="block text-sm font-medium text-gray-700">Photo</label>
-                      <div className="mt-1 flex items-center">
-                        <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
-                          <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                          </svg>
-                        </span>
-                        <button
-                          type="button"
-                          className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                          Change
-                        </button>
-                      </div>
-                    </div> */}
+              
   
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Add NFT</label>

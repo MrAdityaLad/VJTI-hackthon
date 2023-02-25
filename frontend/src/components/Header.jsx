@@ -88,6 +88,11 @@ function Header() {
         <nav className={`md:flex md:items-center ${isMenuOpen ? "block" : "hidden"}`}>
           <ul className="flex flex-col md:flex-row space-x-4 md:space-x-8 md:space-y-0">
             <li>
+              <Link to="/create" className="text-white hover:text-gray-400">
+                Create
+              </Link>
+            </li>
+            <li>
               <Link to="/marketplace" className="text-white hover:text-gray-400">
                 Marketplace
               </Link>
