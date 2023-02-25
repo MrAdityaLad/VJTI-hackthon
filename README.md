@@ -1,1 +1,0 @@
-# VJTI-hackthon
